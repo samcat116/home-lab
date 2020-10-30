@@ -1,5 +1,5 @@
 # home-lab
-This repository hosts the code and configuration for my home infrastructure. This runs things that I actually use, as well as acting as a proving ground for different infrastrucutre tools that I want to get to know. 
+This repository hosts the code and configuration for my home infrastructure. This runs things that I actually use, as well as acting as a proving ground for different infrastructure tools that I want to get to know. 
 
 There are several major components to this network:
 1. An AWS EC2 instance running HA proxy to proxy connections from the public internet to my local home network over a secure connection
