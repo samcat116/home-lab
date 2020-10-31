@@ -1,4 +1,44 @@
 ---
 # Setup and configure HA-Proxy
+- hosts: all
+  remote_user: ubuntu
+  become: yes
+  tasks:
+  - name: Install Dependencies
+    apt:
+      pkg:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg-agent
+      - software-properties-common
+      - python3-pip
+      state: latest
 
-
+  - name: Install Docker Python module
+    pip:
+      name: docker-py
+      state: present
+      
+  - name: Add Docker Repo GPG key
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
+      
+  - name: Add Docker Repo
+    apt_repository:
+      repo: deb [arch=arm64] https://download.docker.com/linux/ubuntu focal stable
+      
+  - name: Install Docker
+    apt:
+      pkg:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      
+  - name: Run HA-Proxy container
+    community.general.docker_container:
+      name: proxy-container
+      image: haproxy
+      state: present
+      container_default_behavior: no_defaults
