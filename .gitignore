@@ -34,3 +34,5 @@ override.tf.json
 terraform.rc
 /ha-proxy/homelab-node-keypair
 /ha-proxy/homelab-node-keypair.pub
+/.nova
+inventory
