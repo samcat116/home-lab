@@ -36,9 +36,15 @@
       - docker-ce-cli
       - containerd.io
       
+  - name: Copy over HA Proxy Config file
+    copy:
+      src: ha-proxy.cfg
+      dest: /etc/haproxy/haproxy.cfg
+      
   - name: Run HA-Proxy container
     community.general.docker_container:
       name: proxy-container
       image: haproxy
       state: present
+      command: haproxy -c -f /etc/haproxy/haproxy.cfg
       container_default_behavior: no_defaults
