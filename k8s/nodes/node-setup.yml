@@ -1,0 +1,11 @@
+---
+  - name: Setup K8s no_defaults
+    hosts: all
+    become_method: sudo
+    roles: 
+      - role: artis3n.tailscale
+        vars:
+          tailscale_auth_key: !vault |
+          slkdjfa;lskdf;alskdfj;alskdfj
+    
+    tasks: 

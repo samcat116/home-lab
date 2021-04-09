@@ -36,3 +36,5 @@ terraform.rc
 /ha-proxy/homelab-node-keypair.pub
 /.nova
 inventory
+/ha-proxy/deploy_key
+/ha-proxy/deploy_key.pub
